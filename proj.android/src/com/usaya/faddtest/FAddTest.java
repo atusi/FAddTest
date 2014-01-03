@@ -34,16 +34,30 @@ import android.app.Activity;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+//GameFeat広告対応追加
+import jp.basicinc.gamefeat.android.sdk.controller.GameFeatAppController;
 
 public class FAddTest extends Cocos2dxActivity{
 	
     private static Activity activity = null; // Nand広告対応追加
     private static NendAdView adView = null; // Nand広告対応追加
 	
+    GameFeatAppController gfAppController; // GameFeat広告対応追加
+    
     protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);	
 		activity = this;
+		
+		// GFコントローラ
+		gfAppController = new GameFeatAppController();
 	}
+    
+    @Override
+    public void onStart() {
+    	super.onStart();
+    	// 広告設定初期化
+    	gfAppController.activateGF(activity, false, false, true);
+    }
 
     public Cocos2dxGLSurfaceView onCreateView() {
     	Cocos2dxGLSurfaceView glSurfaceView = new Cocos2dxGLSurfaceView(this);
@@ -76,4 +90,11 @@ public class FAddTest extends Cocos2dxActivity{
     		}
     	});
     }
+    
+    public static void showGameFeatView(){
+    	// GameFeatAppController.show(activity);
+    	// サンプルコードとか上記の記述だったが、まずshowがstaticじゃない時点でアホじゃないかと思うが正しいのだろうか？
+    	GameFeatAppController gf = GameFeatAppController.getIncetance(activity);
+    	gf.show(activity);
+   }
 }
