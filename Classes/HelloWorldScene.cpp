@@ -87,7 +87,7 @@ void HelloWorld::menuCloseCallback(CCObject* pSender)
     // CCDirector::sharedDirector()->end();
 
     // GameFeatテスト
-    // GameFeatViewManager::showGameFeatView();
+    GameFeatViewManager::showGameFeatView();
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     // exit(0);
