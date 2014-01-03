@@ -28,10 +28,21 @@ import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
 import android.os.Bundle;
 
+//NandL‘Î‰ž’Ç‰Á
+import net.nend.android.NendAdView;
+import android.app.Activity;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+
+
 public class FAddTest extends Cocos2dxActivity{
+	
+    private static Activity activity = null; // NandL‘Î‰ž’Ç‰Á
+    private static NendAdView adView = null; // NandL‘Î‰ž’Ç‰Á
 	
     protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);	
+		activity = this;
 	}
 
     public Cocos2dxGLSurfaceView onCreateView() {
@@ -45,4 +56,24 @@ public class FAddTest extends Cocos2dxActivity{
     static {
         System.loadLibrary("cocos2dcpp");
     }     
+    
+    // NandL‘Î‰ž’Ç‰Á
+    public static void showAdView()
+    {
+    	activity.runOnUiThread(new Runnable(){
+    		public void run()
+    		{
+    			if (adView == null) {
+        			adView = new NendAdView(activity, 3174, "c5cb8bc474345961c6e7a9778c947957ed8e1e4f");
+ 
+        			RelativeLayout relativeLayout = new RelativeLayout(activity);
+        			activity.addContentView(relativeLayout, new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+    				ViewGroup.LayoutParams.WRAP_CONTENT));
+        			relativeLayout.addView(adView);
+ 
+        			adView.loadAd();
+        		}
+    		}
+    	});
+    }
 }
