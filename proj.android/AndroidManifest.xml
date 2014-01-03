@@ -24,12 +24,12 @@
         <meta-data android:name="gamefeat_site_id" android:value="2485" />
         <activity
             android:name="jp.basicinc.gamefeat.android.sdk.view.GameFeatAppActivity"
-            android:configChanges="orientation|keyboardHidden"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="GameFeat" >
         </activity>
         <activity
             android:name="jp.basicinc.gamefeat.android.sdk.view.GameFeatAppChildActivity"
-            android:configChanges="orientation|keyboardHidden"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="GameFeat"
             android:screenOrientation="sensor" >
         </activity>
